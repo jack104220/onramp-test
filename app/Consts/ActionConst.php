@@ -8,10 +8,15 @@ class ActionConst
      * 可用列表
      */
     const LIST = [
-        self::EVENT,
-        self::VIEW,
-        self::VIDEO,
+        'event' => self::EVENT,
+        'view' => self::VIEW,
+        'video' => self::VIDEO,
     ];
+
+    /**
+     * 未知
+     */
+    const UNKNOWN = 0;
     /**
      * 事件
      */

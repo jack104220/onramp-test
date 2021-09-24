@@ -29,4 +29,13 @@
 - 啟動octane
 <code>php artisan octane:start --host=0.0.0.0</code>
 
-## 
+## 後端Tag操作有以下API
+- 查詢tag列表 <code>GET:/api/tags</code>
+- 查詢tag明細 <code>GET:/api/tags/{id}</code>
+- 新增tag <code>POST:/api/tags</code>
+- 修改tag <code>PATCH:/api/tags/{id}</code>
+- 刪除tag <code>DELETE:/api/tags/{id}</code>
+
+## 前端操作接口
+- tag內容輸出 <code>GET:/{objectId}</code>   AW-XXXX 那種
+- 接受活動 <code>GET:/receive</code> 當作是全部接收都打這個接口

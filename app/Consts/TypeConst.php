@@ -8,11 +8,15 @@ class TypeConst
      * 可用列表
      */
     const LIST = [
-        self::CONVERSION,
-        self::CLICK,
-        self::PLAY,
+        'conversion' => self::CONVERSION,
+        'click' => self::CLICK,
+        'play' => self::PLAY,
     ];
 
+    /**
+     * 未知
+     */
+    const UNKNOWN = 0;
     /**
      * 轉換
      */

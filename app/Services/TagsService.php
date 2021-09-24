@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Consts\ActionConst;
+use App\Consts\TypeConst;
 use App\Repositories\TagsRepository;
 use App\Repositories\TagRecordsRepository;
 
@@ -31,6 +33,21 @@ class TagsService
     public function detail($id)
     {
         return $this->tagsRepo->getOne($id)->toArray();
+    }
+
+    /**
+     * 取得tag的內容
+     *
+     * @param string $objectId
+     * @return string
+     */
+    public function getContent($objectId)
+    {
+        $object = $this->tagsRepo->getOneByObjectId($objectId);
+        if (empty($object)) {
+            return '';
+        }
+        return $object->content;
     }
 
     /**
@@ -102,5 +119,28 @@ class TagsService
         } while (true);
 
         return $objectId;
+    }
+
+    /**
+     * 增加紀錄，通常會扔queue解耦
+     *
+     * @param array $params
+     * @return bool
+     */
+    public function addRecord($params)
+    {
+        $objectId = $params['object_id'];
+        $params['action']   = ActionConst::LIST[strtolower($params['action'])] ?? ActionConst::UNKNOWN;
+        $params['type']     = TypeConst::LIST[strtolower($params['type'])] ?? TypeConst::UNKNOWN;
+        $params['currency'] = strtoupper($params['currency'] ?? 'USD');
+
+        $object = $this->tagsRepo->getOneByObjectId($objectId);
+        if (empty($object)) {
+            return false;
+        }
+
+        $this->recordRepo->insert($params);
+
+        return true;
     }
 }

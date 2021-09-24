@@ -18,4 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/{object_id}', [RecieveController::class, 'index']);
+Route::get('/receive', [RecieveController::class, 'record']);
+
+Route::get('/{objectId}', [RecieveController::class, 'index']);
