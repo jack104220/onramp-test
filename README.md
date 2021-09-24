@@ -39,3 +39,6 @@
 ## 前端操作接口
 - tag內容輸出 <code>GET:/{objectId}</code>   AW-XXXX 那種
 - 接受活動 <code>GET:/receive</code> 當作是全部接收都打這個接口
+
+## 尚未完成
+- API查詢成效
