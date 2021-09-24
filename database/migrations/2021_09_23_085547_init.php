@@ -30,6 +30,8 @@ class Init extends Migration
             $table->float('value', 12, 4)->default(0.0)->comment('價值');
             $table->string('currency', 24)->comment('幣別');
             $table->timestamps();
+
+            $table->index('object_id', 'object_id_index');
         });
 
         Schema::dropIfExists('personal_access_tokens');
@@ -43,6 +45,6 @@ class Init extends Migration
     public function down()
     {
         Schema::dropIfExists('tbl_tags');
-        Schema::dropIfExists('tbl_tag_record');
+        Schema::dropIfExists('tbl_tag_records');
     }
 }

@@ -24,6 +24,8 @@
 - 建立資料庫 (container外)
 - 執行migrate
 <code>php artisan migrate</code>
+- 執行seeder
+<code>php artisan db:seed</code>
 - 啟動octane
 <code>php artisan octane:start --host=0.0.0.0</code>
 
